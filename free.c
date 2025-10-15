@@ -19,7 +19,7 @@ void	ft_free_map(t_map *map)
 	if (!map || !map->grid)
 		return ;
 	i = 0;
-	while (i < map->rows)
+	while (i < map->linhas)
 		free(map->grid[i++]);
 	free(map->grid);
 }
