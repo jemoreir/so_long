@@ -22,13 +22,14 @@
 
 typedef struct s_map
 {
-    char    **grid;
-    int     rows;
-    int     cols;
-    int     player_x;
-    int     player_y;
-    int     collectibles;
-    int     exits;
+    char	**grid;
+    int		linhas;
+    int		colunas;
+    int		player_x;
+    int		player_y;
+    int		coletaveis;
+    int		saida;
+    int		players;
 }   t_map;
 
 typedef struct s_game

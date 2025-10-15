@@ -21,3 +21,15 @@ void	ft_check_map(t_map *map)
 	ft_check_playable(map);
 	return ;
 }
+
+void	ft_init_map(t_map *map)
+{
+	map->grid = NULL;
+	map->linhas = 0;
+	map->colunas = 0;
+	map->player_x = -1;
+	map->player_y = -1;
+	map->saida = 0;
+	map->coletaveis = 0;
+	map->players = 0;
+}
