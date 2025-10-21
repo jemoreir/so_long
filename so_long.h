@@ -19,6 +19,8 @@
 # include <stdio.h>
 # include <string.h>
 # include "minilibx-linux/mlx.h"
+# include "libft/libft.h"
+# include "get_next_line/get_next_line.h"
 
 typedef struct s_map
 {
@@ -49,5 +51,7 @@ void	ft_check_invalid_chars(t_map *map);
 void	ft_check_elements(t_map *map);
 void	ft_check_walls(t_map *map);
 void	ft_check_retangular(t_map *map);
+int		count_line(char *file);
+char	**count_large(char *file, int *lines, int *col);
 
 #endif

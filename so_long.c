@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int main(int argc, char **argv)
+/* int main(int argc, char **argv)
 {
 	// t_game game;
 
@@ -23,6 +23,6 @@ int main(int argc, char **argv)
 	}
 	// carregar o mapa com o read_map
 	// checkar o mapa com check_map
-	printf("Map: %s\n", argv[1]);
+	ft_printf("Map: %s\n", argv[1]);
 	return (0);
-}
+} */
