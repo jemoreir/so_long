@@ -84,3 +84,33 @@ void	find_player(t_map *map)
 		y++;
 	}
 }
+
+t_map	*load(char *file)
+{
+	t_map	*mapa;
+	mapa = malloc(sizeof (t_map));
+	if(!mapa)
+		return NULL;
+	mapa->grid = count_large(file, mapa->linhas, mapa->colunas);
+	if(!mapa->grid)
+	{
+		free(mapa);
+		return NULL;
+	}
+	find_player(mapa);
+	return mapa;
+}
+
+int	ft_linelen(char *line)
+{
+	int	i;
+
+	i = 0;
+	while(line[i])
+	{
+		if(line[i] == '\n')
+			return(i);
+		i++;
+	}
+	return(i);
+}

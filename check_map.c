@@ -22,6 +22,24 @@ void	ft_check_map(t_map *map)
 	return ;
 }
 
+int	ft_check_line(char *line, t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while(i < ft_linelen(line))
+	{
+		if(line[i] != '1')
+		{
+			ft_free_map(map, "Error\nMapa não fechado.\n");
+			return(1);
+		}
+		i++;
+	}
+	return(0);
+}
+
+
 void	ft_init_map(t_map *map)
 {
 	map->grid = NULL;

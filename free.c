@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	ft_free_map(t_map *map)
+void	ft_free_map(t_map *map, char *erro)
 {
 	int	i;
 
@@ -22,12 +22,13 @@ void	ft_free_map(t_map *map)
 	while (i < map->linhas)
 		free(map->grid[i++]);
 	free(map->grid);
+	ft_putstr_fd(erro, 2);
 }
 
 void	ft_exit_game(t_game *game, char *mensagem)
 {
 	if (mensagem)
 		write(2, mensagem, strlen(mensagem));
-	ft_free_map(&game->map);
+	ft_free_map(&game->map, mensagem);
 	exit(1);
 }
