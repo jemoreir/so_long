@@ -12,16 +12,16 @@
 
 #include "so_long.h"
 
-void	ft_draw_map(t_game *game, t_map *map)
+void	ft_draw_map(t_game *game)
 {
 	int	y;
 	int	x;
 
 	y = 0;
-	while(y < map->linhas)
+	while(y < game->map.linhas)
 	{
 		x = 0;
-		while(x < ft_linelen(map->grid[y]))
+		while(x < ft_linelen(game->map.grid[y]))
 		{
 
 		}

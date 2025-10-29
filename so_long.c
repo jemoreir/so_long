@@ -15,7 +15,7 @@
 int main(int argc, char **argv)
 {
 	t_map	*map;
-	t_game	*game;
+	t_game	game;
 
 	if (argc != 2)
 	{
@@ -26,9 +26,12 @@ int main(int argc, char **argv)
 	if(!map)
 		return(1);
 	ft_check_map(map);
-	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx, (map->colunas * 32), (map->linhas * 32), "so_long");
-	if(!game->win)
-		ft_free_Error(map, "Erro\nFalha em criar janela\n");
-	return (0);
+	game.map = *map;
+	free(map);
+	map = NULL;
+	game.mlx = mlx_init();
+	game.win = mlx_new_window(game.mlx, (map->colunas * 32), (map->linhas * 32), "so_long");
+	if(!game.win)
+		ft_exit_game(&game, "Erro\nFalha em criar janela\n");
+	ft_init_game(&game);
 }
