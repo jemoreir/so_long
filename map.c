@@ -66,18 +66,18 @@ void	find_player(t_map *map)
 	map->player_x = -1;
 	map->player_y = -1;
 	map->coletaveis = 0;
-	x = 0;
 	y = 0;
 	while(y < map->linhas)
 	{
+		x = 0;
 		while(x < map->colunas)
 		{
-			if(map->grid[x][y] == 'P')
+			if(map->grid[y][x] == 'P')
 			{
 				map->player_x = x;
 				map->player_y = y;
 			}
-			else if(map->grid[x][y] == 'C')
+			else if(map->grid[y][x] == 'C')
 				map->coletaveis++;
 			x++;
 		}
@@ -90,15 +90,12 @@ t_map	*load(char *file)
 	t_map	*mapa;
 	mapa = malloc(sizeof (t_map));
 	if(!mapa)
-		return NULL;
+		return(NULL);
 	mapa->grid = count_large(file, mapa->linhas, mapa->colunas);
 	if(!mapa->grid)
-	{
-		free(mapa);
-		return NULL;
-	}
+		ft_free_Error(mapa, NULL);
 	find_player(mapa);
-	return mapa;
+	return(mapa);
 }
 
 int	ft_linelen(char *line)

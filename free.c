@@ -12,23 +12,67 @@
 
 #include "so_long.h"
 
-void	ft_free_map(t_map *map, char *erro)
+void	ft_free_Error(t_map *map, char *erro)
 {
 	int	i;
 
 	if (!map || !map->grid)
+	{
+		ft_putstr_fd("Erro\n Mapa invalido.\n", 2);
 		return ;
+	}
+	i = 0;
+	while (i < map->linhas)
+	{
+		if(map->grid[i])
+			free(map->grid[i++]);
+	}
+	if(!erro)
+		ft_putstr_fd("Erro ao alocar mapa\n", 2);
+	else
+		ft_putstr_fd(erro, 2);
+	free(map->grid);
+	free(map);
+	exit(1);
+}
+
+void	ft_free_map(t_map *map)
+{
+	int	i;
+
+	if (!map || !map->grid)
+	{
+		ft_putstr_fd("Erro\n Mapa invalido.\n", 2);
+		return ;
+	}
 	i = 0;
 	while (i < map->linhas)
 		free(map->grid[i++]);
 	free(map->grid);
-	ft_putstr_fd(erro, 2);
+	free(map);
 }
 
 void	ft_exit_game(t_game *game, char *mensagem)
 {
 	if (mensagem)
-		write(2, mensagem, strlen(mensagem));
-	ft_free_map(&game->map, mensagem);
+		write(2, mensagem, ft_strlen(mensagem));
+	if(game->coletavel_image)
+		mlx_destroy_image(game->mlx, game->coletavel_image);
+	if(game->parede_image)
+		mlx_destroy_image(game->mlx, game->parede_image);
+	if(game->personagem_image)
+		mlx_destroy_image(game->mlx, game->personagem_image);
+	if(game->piso_image)
+		mlx_destroy_image(game->mlx, game->piso_image);
+	if(game->saida_image)
+		mlx_destroy_image(game->mlx, game->saida_image);
+	if(game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	if(game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
+	ft_free_Error(&game->map, NULL);
 	exit(1);
 }

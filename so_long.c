@@ -12,17 +12,23 @@
 
 #include "so_long.h"
 
-/* int main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	// t_game game;
+	t_map	*map;
+	t_game	*game;
 
 	if (argc != 2)
 	{
 		write(2, "Argumentos Invalidos\n", 21);
 		return (1);
 	}
-	// carregar o mapa com o read_map
-	// checkar o mapa com check_map
-	ft_printf("Map: %s\n", argv[1]);
+	map = load(argv[1]);
+	if(!map)
+		return(1);
+	ft_check_map(map);
+	game->mlx = mlx_init();
+	game->win = mlx_new_window(game->mlx, (map->colunas * 32), (map->linhas * 32), "so_long");
+	if(!game->win)
+		ft_free_Error(map, "Erro\nFalha em criar janela\n");
 	return (0);
-} */
+}

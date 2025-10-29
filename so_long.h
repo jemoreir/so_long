@@ -40,11 +40,17 @@ typedef struct s_game
     void    *win;
     t_map   map;
     int     moves;
+    void	*parede_image;
+	void	*piso_image;
+	void	*personagem_image;
+	void	*saida_image;
+	void	*coletavel_image;
 }	t_game;
 
 //void	read_map(char *path, t_map *map);
 //void	check_map(t_map *map);
-void	ft_free_map(t_map *map, char *erro);
+void	ft_free_Error(t_map *map, char *erro);
+void	ft_free_map(t_map *map);
 void	ft_exit_game(t_game *game, char *message);
 void	ft_check_playable(t_map *map);
 void	ft_check_invalid_chars(t_map *map);
@@ -54,8 +60,15 @@ void	ft_check_retangular(t_map *map);
 int		count_line(char *file);
 char	**count_large(char *file, int *lines, int *col);
 void	find_player(t_map *map);
+void	ft_check_map(t_map *map);
+void	ft_init_map(t_map *map);
 t_map	*load(char *file);
 int		ft_linelen(char *line);
 int		ft_check_line(char *line, t_map *map);
+int     ft_isvalidchar(char c);
+void    ft_floodfill(t_map *map, int x, int y);
+t_map	*ft_copy(t_map *map);
+t_map	*ft_copymap(t_map *map);
+void	ft_init_game(t_game *game);
 
 #endif
