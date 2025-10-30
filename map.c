@@ -18,6 +18,7 @@ int	count_line(char *file)
 	int	count;
 	char *line;
 
+	count = 0;
 	fd = open(file, O_RDONLY);
 	if(fd < 0)
 		return(0);
@@ -30,7 +31,7 @@ int	count_line(char *file)
 	return(count);
 }
 
-char	**count_large(char *file, int *lines, int *col)
+char	**count_large(char *file)
 {
 	int		fd;
 	int		i;
@@ -40,20 +41,18 @@ char	**count_large(char *file, int *lines, int *col)
 	fd = open(file, O_RDONLY);
 	if(fd < 0)
 		return NULL;
-	*lines = count_line(file);
-	grade = malloc(sizeof(char *) * (*lines));
+	grade = malloc(sizeof(char *) * (count_line(file) + 1));
 	if (!grade)
 		return NULL;
 	i = 0;
 	while((line = get_next_line(fd)))
 	{
+		if(line[ft_linelen(line) - 1] == '\n' || line[ft_linelen(line) - 1] == '\r')
+			line[ft_linelen(line) - 1] = '\0';
 		grade[i] = line;
-		if(i == 0)
-			*col = 0;
-		while(line[*col])
-			*col++;
 		i++;
 	}
+	grade[i] = NULL;
 	close(fd);
 	return grade;
 }
@@ -91,9 +90,14 @@ t_map	*load(char *file)
 	mapa = malloc(sizeof (t_map));
 	if(!mapa)
 		return(NULL);
-	mapa->grid = count_large(file, mapa->linhas, mapa->colunas);
+	ft_init_map(mapa);
+	mapa->grid = count_large(file);
 	if(!mapa->grid)
 		ft_free_Error(mapa, NULL);
+	mapa->linhas = count_line(file);
+	mapa->colunas = ft_linelen(mapa->grid[0]);
+	if(!mapa->grid || mapa->linhas == 0)
+		ft_free_Error(mapa, "mapa vazio");
 	find_player(mapa);
 	return(mapa);
 }
@@ -103,11 +107,7 @@ int	ft_linelen(char *line)
 	int	i;
 
 	i = 0;
-	while(line[i])
-	{
-		if(line[i] == '\n')
-			return(i);
+	while(line[i] && line[i] != '\n')
 		i++;
-	}
 	return(i);
 }

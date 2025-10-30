@@ -67,6 +67,8 @@ t_map	*ft_copymap(t_map *map)
 	if(!cpy_map)
 		return(NULL);
 	y = 0;
+	if(cpy_map->linhas != map->linhas)
+		ft_free_Error(cpy_map, "linhas invalidas.");
 	cpy_map->grid = malloc(sizeof (char *) * (cpy_map->linhas + 1));
 	if(!cpy_map->grid)
 		ft_free_Error(cpy_map, NULL);

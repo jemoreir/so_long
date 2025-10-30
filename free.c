@@ -18,14 +18,15 @@ void	ft_free_Error(t_map *map, char *erro)
 
 	if (!map || !map->grid)
 	{
-		ft_putstr_fd("Erro\n Mapa invalido.\n", 2);
-		return ;
+		ft_putstr_fd("Erro\n map ou map->grid inexistente.", 2);
+		exit(1);
 	}
 	i = 0;
 	while (i < map->linhas)
 	{
 		if(map->grid[i])
-			free(map->grid[i++]);
+			free(map->grid[i]);
+		i++;
 	}
 	if(!erro)
 		ft_putstr_fd("Erro ao alocar mapa\n", 2);
@@ -42,7 +43,7 @@ void	ft_free_map(t_map *map)
 
 	if (!map || !map->grid)
 	{
-		ft_putstr_fd("Erro\n Mapa invalido.\n", 2);
+		ft_putstr_fd("Erro\n Mapa invalido free map.\n", 2);
 		return ;
 	}
 	i = 0;

@@ -14,9 +14,9 @@
 
 void	ft_check_retangular(t_map *map)
 {
-	size_t	line;
-	size_t	y;
-	size_t	len_y;
+	int	line;
+	int	y;
+	int	len_y;
 
 	line = ft_linelen(map->grid[0]);
 	y = 0;
@@ -50,10 +50,13 @@ void	ft_check_elements(t_map *map)
 	int	x;
 
 	y = 0;
+	map->players = 0;
+	map->coletaveis = 0;
+	map->saida = 0;
 	while(y < map->linhas)
 	{
 		x = 0;
-		while(x < ft_linelen(map->grid[y]) - 1)
+		while(x < ft_linelen(map->grid[y]))
 		{
 			if(map->grid[y][x] == 'P')
 				map->players++;
