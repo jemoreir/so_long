@@ -50,7 +50,7 @@ void	ft_free_map(t_map *map)
 	while (i < map->linhas)
 		free(map->grid[i++]);
 	free(map->grid);
-	free(map);
+	map->grid = NULL;
 }
 
 void	ft_exit_game(t_game *game, char *mensagem)
@@ -74,6 +74,12 @@ void	ft_exit_game(t_game *game, char *mensagem)
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 	}
-	ft_free_Error(&game->map, NULL);
+	ft_free_map(&game->map);
 	exit(1);
+}
+
+int	ft_close(t_game *game)
+{
+	ft_exit_game(game, NULL);
+	return (0);
 }

@@ -20,6 +20,8 @@ void	ft_draw_map(t_game *game, int size)
 	y = 0;
 	while(y < game->map.linhas)
 	{
+		if (game->map.coletaveis == 0 && game->saida_aberta == 0)
+			game->saida_image = mlx_xpm_file_to_image(game->mlx, "Assets/portal2.xpm", &size, &size);
 		x = 0;
 		while(x < ft_linelen(game->map.grid[y]))
 		{
@@ -60,6 +62,10 @@ void	ft_init_game(t_game *game, int size)
 	ft_printf("saida %dx%d", size, size);
 	if(!game->saida_image)
 		ft_exit_game(game, "Erro ao carregar Assets/portal.xpm\n");
+	game->moves = 0;
+	game->saida_aberta = 0;
+	game->player_x = game->map.player_x;
+	game->player_y = game->map.player_y;
 }
 
 void	ft_window(t_game *game, int *size)

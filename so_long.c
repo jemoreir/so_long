@@ -29,11 +29,11 @@ int main(int argc, char **argv)
 	ft_printf("linhas: %d\ncolunas: %d\n", map->linhas, map->colunas);
 	ft_check_map(map);
 	game.map = *map;
-	free(map);
-	map = NULL;
 	ft_window(&game, &size);
 	ft_init_game(&game, size);
 	ft_draw_map(&game, size);
+	mlx_hook(game.win, 2, 1L << 0, ft_key_press, &game);
+	mlx_hook(game.win, 17, 0, ft_close, &game);
 	mlx_loop(game.mlx);
 	return(0);
 }

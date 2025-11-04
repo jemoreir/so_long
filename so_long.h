@@ -45,6 +45,9 @@ typedef struct s_game
 	void	*personagem_image;
 	void	*saida_image;
 	void	*coletavel_image;
+    int		player_x;
+	int		player_y;
+    int		saida_aberta;
 }	t_game;
 
 void	ft_free_Error(t_map *map, char *erro);
@@ -70,5 +73,8 @@ t_map	*ft_copymap(t_map *map);
 void	ft_draw_map(t_game *game, int size);
 void	ft_init_game(t_game *game, int size);
 void	ft_window(t_game *game, int *size);
+void	ft_move_player(t_game *game, int dx, int dy);
+int		ft_key_press(int keycode, t_game *game);
+int		ft_close(t_game *game);
 
 #endif
