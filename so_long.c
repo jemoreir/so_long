@@ -26,7 +26,6 @@ int main(int argc, char **argv)
 	map = load(argv[1]);
 	if(!map)
 		return(1);
-	ft_printf("linhas: %d\ncolunas: %d\n", map->linhas, map->colunas);
 	ft_check_map(map);
 	game.map = *map;
 	ft_window(&game, &size);

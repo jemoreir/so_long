@@ -22,10 +22,7 @@ MLX_DIR = minilibx-linux
 MLX = $(MLX_DIR)/libmlx.a
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
-GNL_DIR = get_next_line
-GNL_SRC = $(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c
-
-SRC = so_long.c map.c check_map.c flood_fill.c render.c hooks.c free.c check_map_utils.c $(GNL_SRC)
+SRC = so_long.c map.c check_map.c flood_fill.c render.c hooks.c free.c check_map_utils.c
 OBJ = $(SRC:.c=.o)
 
 all: $(MLX) $(NAME) $(LIBFT)
