@@ -14,13 +14,13 @@
 
 void	ft_floodfill(t_map *map, int x, int y)
 {
-	if(x < 0 || y < 0 || y >= map->linhas || x >= ft_linelen(map->grid[0]))
+	if (x < 0 || y < 0 || y >= map->linhas || x >= ft_linelen(map->grid[0]))
 		return ;
-	if(map->grid[y][x] == '1' || map->grid[y][x] == 'V')
+	if (map->grid[y][x] == '1' || map->grid[y][x] == 'V')
 		return ;
-	if(map->grid[y][x] == 'C')
+	if (map->grid[y][x] == 'C')
 		map->coletaveis--;
-	if(map->grid[y][x] == 'E')
+	if (map->grid[y][x] == 'E')
 		map->saida--;
 	map->grid[y][x] = 'V';
 	ft_floodfill(map, x + 1, y);
@@ -31,11 +31,11 @@ void	ft_floodfill(t_map *map, int x, int y)
 
 t_map	*ft_copy(t_map *map)
 {
-	t_map *cpy_map;
+	t_map	*cpy_map;
 
 	cpy_map = malloc(sizeof (t_map));
-	if(!cpy_map)
-		return(NULL);
+	if (!cpy_map)
+		return (NULL);
 	cpy_map->linhas = map->linhas;
 	cpy_map->colunas = map->colunas;
 	cpy_map->player_x = map->player_x;
@@ -43,5 +43,5 @@ t_map	*ft_copy(t_map *map)
 	cpy_map->coletaveis = map->coletaveis;
 	cpy_map->saida = map->saida;
 	cpy_map->grid = NULL;
-	return(cpy_map);
+	return (cpy_map);
 }

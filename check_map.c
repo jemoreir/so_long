@@ -26,21 +26,21 @@ int	ft_check_line(char *line, t_map *map)
 	int	i;
 
 	i = 0;
-	while(i < ft_linelen(line))
+	while (i < ft_linelen(line))
 	{
-		if(line[i] != '1')
+		if (line[i] != '1')
 		{
 			ft_free_Error(map, "Error\nMapa não fechado.\n");
-			return(1);
+			return (1);
 		}
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
 int	ft_isvalidchar(char c)
 {
-	if(c == '1' || c == '0' || c == 'P' || c == 'C' || c == 'E')
+	if (c == '1' || c == '0' || c == 'P' || c == 'C' || c == 'E')
 		return (1);
 	else
 		return (0);
@@ -60,26 +60,27 @@ void	ft_init_map(t_map *map)
 
 t_map	*ft_copymap(t_map *map)
 {
-	int	y;
+	int		y;
 	t_map	*cpy_map;
 
 	cpy_map = ft_copy(map);
-	if(!cpy_map)
-		return(NULL);
+	if (!cpy_map)
+		return (NULL);
 	y = 0;
-	if(cpy_map->linhas != map->linhas)
+	if (cpy_map->linhas != map->linhas)
 		ft_free_Error(cpy_map, "linhas invalidas.");
 	cpy_map->grid = malloc(sizeof (char *) * (cpy_map->linhas + 1));
-	if(!cpy_map->grid)
+	if (!cpy_map->grid)
 		ft_free_Error(cpy_map, NULL);
-	while(y < cpy_map->linhas)
+	while (y < cpy_map->linhas)
 	{
 		cpy_map->grid[y] = malloc(ft_linelen(map->grid[y]) + 1);
-		if(!cpy_map->grid[y])
+		if (!cpy_map->grid[y])
 			ft_free_Error(cpy_map, NULL);
-		ft_strlcpy(cpy_map->grid[y], map->grid[y], (ft_linelen(map->grid[y]) + 1));
+		ft_strlcpy(cpy_map->grid[y], map->grid[y],
+			(ft_linelen(map->grid[y]) + 1));
 		y++;
 	}
 	cpy_map->grid[y] = NULL;
-	return(cpy_map);
+	return (cpy_map);
 }

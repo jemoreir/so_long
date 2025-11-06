@@ -49,7 +49,7 @@ typedef struct s_game
     int		saida_aberta;
 }	t_game;
 
-void	ft_free_Error(t_map *map, char *erro);
+void	ft_free_error(t_map *map, char *erro);
 void	ft_free_map(t_map *map);
 void	ft_exit_game(t_game *game, char *message);
 void	ft_check_playable(t_map *map);
