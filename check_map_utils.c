@@ -24,7 +24,7 @@ void	ft_check_retangular(t_map *map)
 	{
 		len_y = ft_linelen(map->grid[y]);
 		if (len_y != line)
-			ft_free_Error(map, "Erro\nMapa não retangular.\n");
+			ft_free_error(map, "Erro\nMapa não retangular.\n");
 		y++;
 	}
 }
@@ -41,7 +41,7 @@ void	ft_check_walls(t_map *map)
 	{
 		if ((map->grid[y][0] != '1')
 			|| (map->grid[y][ft_linelen(map->grid[y]) - 1] != '1'))
-			ft_free_Error(map, "Erro\nMapa não fechado.\n");
+			ft_free_error(map, "Erro\nMapa não fechado.\n");
 		y++;
 	}
 }
@@ -71,7 +71,7 @@ void	ft_check_elements(t_map *map)
 		y++;
 	}
 	if (map->players != 1 || map->saida != 1 || map->coletaveis < 1)
-		ft_free_Error(map, "Erro, mapa invalido\n");
+		ft_free_error(map, "Erro, mapa invalido\n");
 }
 
 void	ft_check_invalid_chars(t_map *map)
@@ -86,7 +86,7 @@ void	ft_check_invalid_chars(t_map *map)
 		while (x < ft_linelen(map->grid[y]))
 		{
 			if (!ft_isvalidchar(map->grid[y][x]))
-				ft_free_Error(map, "Erro\nMapa Invalido.\n");
+				ft_free_error(map, "Erro\nMapa Invalido.\n");
 			x++;
 		}
 		y++;
@@ -100,6 +100,6 @@ void	ft_check_playable(t_map *map)
 	cpy_map = ft_copymap(map);
 	ft_floodfill(cpy_map, cpy_map->player_x, cpy_map->player_y);
 	if (cpy_map->coletaveis != 0 || cpy_map->saida != 0)
-		ft_free_Error(cpy_map, "Erro\nMapa não jogavel.\n");
+		ft_free_error(cpy_map, "Erro\nMapa não jogavel.\n");
 	ft_free_map(cpy_map);
 }

@@ -23,30 +23,30 @@
 
 typedef struct s_map
 {
-    char	**grid;
-    int		linhas;
-    int		colunas;
-    int		player_x;
-    int		player_y;
-    int		coletaveis;
-    int		saida;
-    int		players;
-}   t_map;
+	char	**grid;
+	int		linhas;
+	int		colunas;
+	int		player_x;
+	int		player_y;
+	int		coletaveis;
+	int		saida;
+	int		players;
+}	t_map;
 
 typedef struct s_game
 {
-    void    *mlx;
-    void    *win;
-    t_map   map;
-    int     moves;
-    void	*parede_image;
-	void	*piso_image;
-	void	*personagem_image;
-	void	*saida_image;
-	void	*coletavel_image;
-    int		player_x;
+	void	*mlx;
+	void	*win;
+	t_map	map;
+	int		moves;
+	void	*par;
+	void	*piso;
+	void	*pl;
+	void	*saida;
+	void	*col;
+	int		player_x;
 	int		player_y;
-    int		saida_aberta;
+	int		saida_aberta;
 }	t_game;
 
 void	ft_free_error(t_map *map, char *erro);
@@ -65,13 +65,13 @@ void	ft_init_map(t_map *map);
 t_map	*load(char *file);
 int		ft_linelen(char *line);
 int		ft_check_line(char *line, t_map *map);
-int     ft_isvalidchar(char c);
-void    ft_floodfill(t_map *map, int x, int y);
+int		ft_isvalidchar(char c);
+void	ft_floodfill(t_map *map, int x, int y);
 t_map	*ft_copy(t_map *map);
 t_map	*ft_copymap(t_map *map);
-void	ft_draw_map(t_game *game, int size);
-void	ft_init_game(t_game *game, int size);
-void	ft_window(t_game *game, int *size);
+void	ft_draw_map(t_game *game, int n);
+void	ft_init_game(t_game *game, int n);
+void	ft_window(t_game *game, int *n);
 void	ft_move_player(t_game *game, int dx, int dy);
 int		ft_key_press(int keycode, t_game *game);
 int		ft_close(t_game *game);

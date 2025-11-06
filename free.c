@@ -57,16 +57,16 @@ void	ft_exit_game(t_game *game, char *mensagem)
 {
 	if (mensagem)
 		write(2, mensagem, ft_strlen(mensagem));
-	if (game->coletavel_image)
-		mlx_destroy_image(game->mlx, game->coletavel_image);
-	if (game->parede_image)
-		mlx_destroy_image(game->mlx, game->parede_image);
-	if (game->personagem_image)
-		mlx_destroy_image(game->mlx, game->personagem_image);
-	if (game->piso_image)
-		mlx_destroy_image(game->mlx, game->piso_image);
-	if (game->saida_image)
-		mlx_destroy_image(game->mlx, game->saida_image);
+	if (game->col)
+		mlx_destroy_image(game->mlx, game->col);
+	if (game->par)
+		mlx_destroy_image(game->mlx, game->par);
+	if (game->pl)
+		mlx_destroy_image(game->mlx, game->pl);
+	if (game->piso)
+		mlx_destroy_image(game->mlx, game->piso);
+	if (game->saida)
+		mlx_destroy_image(game->mlx, game->saida);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)

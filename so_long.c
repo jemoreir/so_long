@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_map	*map;
 	t_game	game;
@@ -24,8 +24,8 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	map = load(argv[1]);
-	if(!map)
-		return(1);
+	if (!map)
+		return (1);
 	ft_check_map(map);
 	game.map = *map;
 	ft_window(&game, &size);
@@ -34,5 +34,5 @@ int main(int argc, char **argv)
 	mlx_hook(game.win, 2, 1L << 0, ft_key_press, &game);
 	mlx_hook(game.win, 17, 0, ft_close, &game);
 	mlx_loop(game.mlx);
-	return(0);
+	return (0);
 }

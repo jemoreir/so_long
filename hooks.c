@@ -19,13 +19,13 @@ void	ft_move_player(t_game *game, int dx, int dy)
 
 	nx = game->player_x + dx;
 	ny = game->player_y + dy;
-	if(game->map.grid[ny][nx] == '1')
-		return;
+	if (game->map.grid[ny][nx] == '1')
+		return ;
 	if (game->map.grid[ny][nx] == 'E' && game->map.coletaveis != 0)
-		return;
-	if(game->map.grid[ny][nx] == 'C')
+		return ;
+	if (game->map.grid[ny][nx] == 'C')
 		game->map.coletaveis--;
-	if(game->map.grid[ny][nx] == 'E' && game->map.coletaveis == 0)
+	if (game->map.grid[ny][nx] == 'E' && game->map.coletaveis == 0)
 		ft_exit_game(game, "Vitoria\n");
 	game->map.grid[ny][nx] = 'P';
 	game->map.grid[game->player_y][game->player_x] = '0';
@@ -38,11 +38,11 @@ void	ft_move_player(t_game *game, int dx, int dy)
 
 int	ft_key_press(int keycode, t_game *game)
 {
-	if(keycode == 65307)
+	if (keycode == 65307)
 		ft_exit_game(game, NULL);
-	else if(keycode == 119)
+	else if (keycode == 119)
 		ft_move_player(game, 0, -1);
-	else if(keycode == 115)
+	else if (keycode == 115)
 		ft_move_player(game, 0, 1);
 	else if (keycode == 97)
 		ft_move_player(game, -1, 0);
