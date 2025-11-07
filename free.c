@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jemoreir <jemoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 14:58:41 by marvin            #+#    #+#             */
-/*   Updated: 2025/10/14 14:58:41 by marvin           ###   ########.fr       */
+/*   Created: 2025/11/07 18:04:55 by jemoreir          #+#    #+#             */
+/*   Updated: 2025/11/07 18:04:55 by jemoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,13 @@ void	ft_free_map(t_map *map)
 	}
 	i = 0;
 	while (i < map->linhas)
-		free(map->grid[i++]);
+	{
+		if (map->grid[i])
+			free(map->grid[i]);
+		i++;
+	}
 	free(map->grid);
-	map->grid = NULL;
+	free(map);
 }
 
 void	ft_exit_game(t_game *game, char *mensagem)

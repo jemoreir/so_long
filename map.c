@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jemoreir <jemoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 16:28:53 by marvin            #+#    #+#             */
-/*   Updated: 2025/10/14 16:28:53 by marvin           ###   ########.fr       */
+/*   Created: 2025/11/07 18:05:20 by jemoreir          #+#    #+#             */
+/*   Updated: 2025/11/07 18:05:20 by jemoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ t_map	*load(char *file)
 {
 	t_map	*mapa;
 
-	mapa = malloc(sizeof (t_map));
+	mapa = malloc(sizeof(t_map));
 	if (!mapa)
 		return (NULL);
 	ft_init_map(mapa);
