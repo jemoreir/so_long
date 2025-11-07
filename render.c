@@ -12,16 +12,25 @@
 
 #include "so_long.h"
 
+static void ft_destroy(t_game *game, int n)
+{
+	if (game->map.coletaveis == 0 && game->saida_aberta == 0)
+	{
+		mlx_destroy_image(game->mlx, game->saida);
+		game->saida = mlx_xpm_file_to_image(game->mlx, "Assets/ex.xpm", &n, &n);
+		game->saida_aberta = 1;
+	}
+}
+
 void	ft_draw_map(t_game *g, int n)
 {
 	int	y;
 	int	x;
 
 	y = 0;
+	ft_destroy(g, n);
 	while (y < g->map.linhas)
 	{
-		if (g->map.coletaveis == 0 && g->saida_aberta == 0)
-			g->saida = mlx_xpm_file_to_image(g->mlx, "Assets/ex.xpm", &n, &n);
 		x = 0;
 		while (x < ft_linelen(g->map.grid[y]))
 		{

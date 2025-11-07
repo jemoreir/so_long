@@ -54,7 +54,7 @@ void	ft_free_map(t_map *map)
 		i++;
 	}
 	free(map->grid);
-	free(map);
+	map->grid = NULL;
 }
 
 void	ft_exit_game(t_game *game, char *mensagem)

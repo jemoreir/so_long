@@ -102,4 +102,5 @@ void	ft_check_playable(t_map *map)
 	if (cpy_map->coletaveis != 0 || cpy_map->saida != 0)
 		ft_free_error(cpy_map, "Erro\nMapa não jogavel.\n");
 	ft_free_map(cpy_map);
+	free(cpy_map);
 }
