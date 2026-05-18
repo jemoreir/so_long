@@ -14,15 +14,23 @@
 
 NAME = so_long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Iincludes
 
 LIBFT_DIR = libft
+SRCS_DIR = src
 LIBFT = $(LIBFT_DIR)/libft.a
 MLX_DIR = minilibx-linux
 MLX = $(MLX_DIR)/libmlx.a
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
-SRC = so_long.c map.c check_map.c flood_fill.c render.c hooks.c free.c check_map_utils.c
+SRC = $(SRCS_DIR)/so_long.c
+		$(SRCS_DIR)/map.c
+		$(SRCS_DIR)/check_map.c
+		$(SRCS_DIR)/flood_fill.c
+		$(SRCS_DIR)/render.c
+		$(SRCS_DIR)/hooks.c
+		$(SRCS_DIR)/free.c
+		$(SRCS_DIR)/check_map_utils.c
 OBJ = $(SRC:.c=.o)
 
 all: $(MLX) $(NAME) $(LIBFT)
