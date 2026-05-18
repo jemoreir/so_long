@@ -18,8 +18,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <string.h>
-# include "minilibx-linux/mlx.h"
-# include "libft/libft.h"
+# include "../minilibx-linux/mlx.h"
+# include "../libft/include/libft.h"
 
 typedef struct s_map
 {
